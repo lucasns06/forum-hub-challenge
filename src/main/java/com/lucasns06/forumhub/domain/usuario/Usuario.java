@@ -1,11 +1,7 @@
 package com.lucasns06.forumhub.domain.usuario;
 
-import com.lucasns06.forumhub.domain.perfil.Perfil;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +12,7 @@ import java.util.List;
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -26,8 +23,11 @@ public class Usuario implements UserDetails {
     private String login;
     private String nome;
     private String senha;
-//    private Perfil perfil;
 
+    public Usuario(DadosCadastroUsuario dados) {
+        this.login = dados.login();
+        this.nome = dados.nome();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

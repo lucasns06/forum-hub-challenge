@@ -25,11 +25,7 @@ public class Topico {
     private Status status;
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "usuario_id")
-//    private Usuario autor;
-//    private Curso curso;
-//    private Respostas respostas;
+
 
     public Topico(DadosCadastroTopico dados) {
         this.titulo = dados.titulo();
@@ -37,14 +33,6 @@ public class Topico {
         this.status = Status.NAO_RESPONDIDA;
         this.dataCriacao = LocalDateTime.now();
     }
-
-//    public Usuario getAutor() {
-//        return autor;
-//    }
-//
-//    public void setAutor(Usuario autor) {
-//        this.autor = autor;
-//    }
 
     public Long getId() {
         return id;
